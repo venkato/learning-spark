@@ -4,6 +4,7 @@
 package com.oreilly.learningsparkexamples.mini.java;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.lang.Iterable;
 
@@ -32,8 +33,8 @@ public class WordCount {
     // Split up into words.
     JavaRDD<String> words = input.flatMap(
       new FlatMapFunction<String, String>() {
-        public Iterable<String> call(String x) {
-          return Arrays.asList(x.split(" "));
+        public Iterator<String> call(String x) {
+          return Arrays.asList(x.split(" ")).iterator();
         }});
     // Transform into word and count.
     JavaPairRDD<String, Integer> counts = words.mapToPair(
