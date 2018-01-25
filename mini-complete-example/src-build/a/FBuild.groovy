@@ -36,6 +36,7 @@ class FBuild extends GenericCompiler {
 
     @Override
     void prepare() {
+        assert baeDir.exists()
         params.javaVersion = '1.7'
         IvyDepResolver2.setDepResolver()
         params.outputDir = new File(baeDir,'build/1')
