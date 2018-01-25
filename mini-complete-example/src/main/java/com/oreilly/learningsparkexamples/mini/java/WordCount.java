@@ -31,10 +31,12 @@ public class WordCount {
     // Load our input data.
     JavaRDD<String> input = sc.textFile(inputFile);
     // Split up into words.
-    JavaRDD<String> words = input.flatMap(
+    JavaRDD<String> words =
+            //input.flatMap(s -> Arrays.asList(s.split(" ")).iterator());
+            input.flatMap(
       new FlatMapFunction<String, String>() {
-        public Iterator<String> call(String x) {
-          return Arrays.asList(x.split(" ")).iterator();
+          public Iterable<String> call(String x) {
+              return Arrays.asList(x.split(" "));
         }});
     // Transform into word and count.
     JavaPairRDD<String, Integer> counts = words.mapToPair(

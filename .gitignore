@@ -1,6 +1,7 @@
 *.class
 *.log
 
+mini-complete-example/build
 # sbt specific
 dist/*
 target/
