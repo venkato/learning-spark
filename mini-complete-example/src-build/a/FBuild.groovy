@@ -10,7 +10,7 @@ import org.zeroturnaround.zip.ZipUtil
 
 import java.util.logging.Logger;
 
-class FBuild extends GenericCompiler {
+class FBuild extends GenericCompiler implements Runnable {
 
     private static final Logger log = JrrClassUtils.getJdkLogForCurrentClass();
 
@@ -26,6 +26,11 @@ class FBuild extends GenericCompiler {
 //            new MavenId('org.apache.spark:spark-mllib_2.11:2.2.1'),
 
     ]
+
+    @Override
+    void run() {
+        f1()
+    }
 
     @Test
     void f1() {
